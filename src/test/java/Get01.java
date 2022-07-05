@@ -64,6 +64,9 @@ public class Get01 {
         // "Headers" nasil yazdirilir:
         System.out.println(response.headers());
 
+        // "Time" nasil yazdirilir:
+        System.out.println(response.getTime());
+
 
     }
 }
