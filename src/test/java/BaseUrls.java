@@ -4,7 +4,7 @@ import org.junit.Before;
 
 public class BaseUrls {
 
-    public RequestSpecification spec;
+    protected RequestSpecification spec;
 
     // @Before annotation'ı kullandığımız methodlar her  Test metodondan önce çalıştırılır.
     @Before
@@ -13,8 +13,4 @@ public class BaseUrls {
         spec = new RequestSpecBuilder().setBaseUri("https://jsonplaceholder.typicode.com").build();
 
     }
-
-
-
-
 }

@@ -36,18 +36,21 @@ public class Get03 extends BaseUrls {
         //3. Step: Send the Request and get the Response
 
         Response response= given().spec(spec).when().get("/{first}/{second}");
+        response.prettyPrint();
 
         //4. Step: Do Assertion
 
         //1. Yol
-     /*   response.then().assertThat().statusCode(200).
+      response.then().
+                assertThat().statusCode(200).
                 contentType("application/json").
-                body("title",equalTo("et itaque necessitatibus maxime molestiae qui quas velitX")).
+                body("title", equalTo("et itaque necessitatibus maxime molestiae qui quas velit")).
                 body("completed", equalTo(false)).
-                body("userId", equalTo(2));*/
+                body("userId", equalTo(2));
 
         //2. Yol:
-        response.then().assertThat().statusCode(200).
+        response.then().
+                assertThat().statusCode(200).
                 contentType(ContentType.JSON).
                 body("title",equalTo("et itaque necessitatibus maxime molestiae qui quas velit"),
                         "completed", equalTo(false),
@@ -55,9 +58,17 @@ public class Get03 extends BaseUrls {
 
 
     }
+    /*
+     Not 1: Assetion yaparken Java çalışmayı durdurduğunda hata sonrası kodlar çalışmaz.
+              Böylece hata sonrası assertion'lar hakkında bilgi sahibi olamayız.
+              Fakat hata öncesi assertion'lar geçmiştir.
 
+     Not 2: Eğer kodumuzu hata noktasında duracak şekilde yazarsak "Hard Assertion" yapmış oluyoruz.
 
+     Not 3: Eğer kodumuzu hata noktasında duramayacak şekilde yazarsak "soft Assertion" yapmış oluyoruz.
 
+     Not 4: Eğer çoklu body() methodu içinde assert yaparsak "Hard Assert",
+            tek body() methodu içinde assert yaparsak "Soft Assert"  yapmış oluyoruz.
 
-
+     */
 }

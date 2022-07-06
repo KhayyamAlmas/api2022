@@ -23,7 +23,7 @@ public class Get02 {
     @Test
     public void get01(){
         //1. Step; Set theUrl
-        String url= "https://restful-booker.herokuapp.com/booking/10001";
+        String url= "https://restful-booker.herokuapp.com/booking/1";
 
         //2. Step; Set the expected data (Post -Put -Patch)
 
