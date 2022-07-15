@@ -43,7 +43,7 @@ public class Post01 extends JsonPlaceHolderBaseUrl {
         JsonPlaceHolderTestData expectedData = new JsonPlaceHolderTestData();
         Map<String, Object> expectedDataMap = expectedData.expectedDataWithAllKeys(55, "Tidy your room", false);
 
-        //3. Step: Send Post Request and get Response
+        //3. Step: Send Post Request and get the Response
         Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedDataMap).when().post("/{first}");
         response.prettyPrint();
 
