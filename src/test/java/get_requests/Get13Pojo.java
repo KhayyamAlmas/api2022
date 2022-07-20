@@ -7,6 +7,7 @@ import pojos.GoRestDataPojo;
 import pojos.GoRestResponseBodyPojo;
 
 import static io.restassured.RestAssured.*;
+import static junit.framework.TestCase.*;
 
 public class Get13Pojo extends GoRestBaseUrl {
 
@@ -38,11 +39,23 @@ public class Get13Pojo extends GoRestBaseUrl {
         spec.pathParams("first", "users", "second", 2508);
 
         //2. Step: Set the expected data
-        GoRestDataPojo goRestDataPojo = new GoRestDataPojo(2508,"Akshita Nehru","nehru_akshita@jast.info","female","active");
-        GoRestResponseBodyPojo goRestResponseBodyPojo=new GoRestResponseBodyPojo(null, goRestDataPojo);
+        GoRestDataPojo goRestDataPojo = new GoRestDataPojo(2508, "Akshita Nehru", "nehru_akshita@jast.info", "female", "active");
+        GoRestResponseBodyPojo goRestResponseBodyPojo = new GoRestResponseBodyPojo(null, goRestDataPojo);
 
         //3. Step: Send Post Request and get the Response
-        Response response=given().spec(spec).when().get("/{first}/{users}");
+        Response response = given().spec(spec).when().get("/{first}/{second}");
         response.prettyPrint();
+
+        //4. Step: Do Assertion
+        GoRestResponseBodyPojo actualPojo = response.as(GoRestResponseBodyPojo.class);
+
+        assertEquals(200,response.getStatusCode());
+        assertEquals(goRestResponseBodyPojo.getMeta(),actualPojo.getMeta());
+        assertEquals(goRestResponseBodyPojo.getData().getId(),actualPojo.getData().getId());
+        assertEquals(goRestResponseBodyPojo.getData().getName(),actualPojo.getData().getName());
+        assertEquals(goRestResponseBodyPojo.getData().getEmail(),actualPojo.getData().getEmail());
+        assertEquals(goRestResponseBodyPojo.getData().getGender(),actualPojo.getData().getGender());
+        assertEquals(goRestResponseBodyPojo.getData().getStatus(),actualPojo.getData().getStatus());
+
     }
 }

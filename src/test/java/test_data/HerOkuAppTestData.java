@@ -1,5 +1,8 @@
 package test_data;
 
+import pojos.BookingDatesPojo;
+import pojos.BookingPojo;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,5 +26,19 @@ public class HerOkuAppTestData {
         expectedDataMap.put("bookingdates",bookingdates);
 
         return expectedDataMap;
+    }
+    public String expectedDataInString(String firstname, String lastname, Integer totalprice, Boolean depositpaid, String checkin,String checkout, String additionalneeds){
+        String expectedData=" {\n" +
+                "    \"firstname\": \"Oliver\",\n" +
+                "    \"lastname\": \"Smith\",\n" +
+                "    \"totalprice\": 100,\n" +
+                "    \"depositpaid\": true,\n" +
+                "    \"bookingdates\": {\n" +
+                "        \"checkin\": \"2022-07-18\",\n" +
+                "        \"checkout\": \"2022-07-19\"\n" +
+                "    },\n" +
+                "    \"additionalneeds\": \"Breakfast\"\n" +
+                "}";
+        return expectedData;
     }
 }
