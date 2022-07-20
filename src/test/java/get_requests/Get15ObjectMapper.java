@@ -50,7 +50,8 @@ public class Get15ObjectMapper extends HerOkuAppBaseUrl {
         //4. Step: Do Assertion
         BookingPojo actualDataPojo=JsonUtil.convertJsonToJavaObject(response.asString(),BookingPojo.class);
 
-        assertEquals(200,response.getStatusCode());
+        //Hard Assertion
+    /*  assertEquals(200,response.getStatusCode());
         assertEquals(expectedDataPojo.getFirstname(),actualDataPojo.getFirstname());
         assertEquals(expectedDataPojo.getLastname(),actualDataPojo.getLastname());
         assertEquals(expectedDataPojo.getTotalprice(),actualDataPojo.getTotalprice());
@@ -59,19 +60,24 @@ public class Get15ObjectMapper extends HerOkuAppBaseUrl {
         assertEquals(expectedDataPojo.getBookingdates().getCheckin(),actualDataPojo.getBookingdates().getCheckin());
         assertEquals(expectedDataPojo.getBookingdates().getCheckout(),actualDataPojo.getBookingdates().getCheckout());
 
+    */
+
         //Soft Assertion
 
         //1. Adim: SoftAssert objesi olustur
         SoftAssert softAssert = new SoftAssert();
+
+        //2. Adim: Assertion yap
         softAssert.assertEquals(actualDataPojo.getFirstname(),expectedDataPojo.getFirstname(), "firstname uyusmadi");
         softAssert.assertEquals(actualDataPojo.getLastname(),expectedDataPojo.getLastname(), "lastname uyusmadi");
         softAssert.assertEquals(actualDataPojo.getTotalprice(),expectedDataPojo.getTotalprice(), "total price uyusmadi");
         softAssert.assertEquals(actualDataPojo.getDepositpaid(),expectedDataPojo.getDepositpaid(), "depositpaid uyusmadi");
+        softAssert.assertEquals(actualDataPojo.getAdditionalneeds(),expectedDataPojo.getAdditionalneeds(), "additionalneeds uyusmadi");
         softAssert.assertEquals(actualDataPojo.getBookingdates().getCheckin(),expectedDataPojo.getBookingdates().getCheckin(), "checkin uyusmadi");
         softAssert.assertEquals(actualDataPojo.getBookingdates().getCheckout(),expectedDataPojo.getBookingdates().getCheckout(), "checkout uyusmadi");
 
-        //2. Adim: Assertion yap
         //3. Adim: assertAll() methodunu calistir
+        softAssert.assertAll();
 
     }
 }
