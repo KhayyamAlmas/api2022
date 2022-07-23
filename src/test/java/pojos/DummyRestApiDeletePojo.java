@@ -1,26 +1,15 @@
 package pojos;
 
-public class ResponseBody {
+public class DummyRestApiDeletePojo {
 
     private String status;
-    private DummyApiDataPojo data;
+    private String data;
     private String message;
 
-    /**
-     * No args constructor for use in serialization
-     *
-     */
-    public ResponseBody() {
+    public DummyRestApiDeletePojo() {
     }
 
-    /**
-     *
-     * @param data
-     * @param message
-     * @param status
-     */
-    public ResponseBody(String status, DummyApiDataPojo data, String message) {
-        super();
+    public DummyRestApiDeletePojo(String status, String data, String message) {
         this.status = status;
         this.data = data;
         this.message = message;
@@ -34,11 +23,11 @@ public class ResponseBody {
         this.status = status;
     }
 
-    public DummyApiDataPojo getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(DummyApiDataPojo data) {
+    public void setData(String data) {
         this.data = data;
     }
 
@@ -52,9 +41,9 @@ public class ResponseBody {
 
     @Override
     public String toString() {
-        return "ResponseBody{" +
+        return "DummyRestApiDeletePojo{" +
                 "status='" + status + '\'' +
-                ", data=" + data +
+                ", data='" + data + '\'' +
                 ", message='" + message + '\'' +
                 '}';
     }
